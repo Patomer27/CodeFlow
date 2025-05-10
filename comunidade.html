@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Comunidade - CodeFlow</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #fff;
+      color: #000;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      border-bottom: 2px solid #000;
+    }
+
+    .menu-icon {
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .icons {
+      display: flex;
+      gap: 20px;
+      
+    }
+
+    .icons img {
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 5px 10px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .new-post {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .new-post textarea,
+    .new-post select,
+    .new-post input[type="file"] {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .new-post button {
+      width: 120px;
+      padding: 10px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .filter {
+      margin-bottom: 20px;
+    }
+
+    .filter select {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .post {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      background-color: #f9f9f9;
+    }
+
+    .post img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .post .user {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .post .username {
+      font-weight: bold;
+    }
+
+    .post .tag {
+      color: gray;
+      margin-left: 10px;
+    }
+
+    .post .content {
+      margin-bottom: 10px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .comments {
+      margin-top: 10px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+
+    .comment {
+      margin-bottom: 8px;
+    }
+
+    .comment-input {
+      display: flex;
+      margin-top: 5px;
+    }
+
+    .comment-input input {
+      flex: 1;
+      padding: 6px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .comment-input button {
+      margin-left: 5px;
+      padding: 6px 10px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 30px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #000;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+    .dropdown-menu a:hover {
+      background-color: #e6e6e6;
+    }
+  </style>
+</head>
+<header>
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <div class="dropdown-menu" id="dropdownMenu">
+    <a href="index.html">inicio</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="configuracoes.html">Configurações</a>
+    <a href="pagamento.html">Dados de Pagamento</a>
+    <a href="notificacoes.html">Notificações</a>
+    <a href="chats.html">chats</a>
+    <a href="meus-codigos.html">Meus Códigos</a>
+    <a href="sair.html">Login</a>
+  </div>
+  <div class="icons">
+    <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="C++"/></a>
+    <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
+    <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
+    <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
+    <a href="python.html"><img src="https://img.icons8.com/ios/40/python.png" alt="Python"/></a>
+    <a href="javascript.html"><img src="https://img.icons8.com/ios/40/javascript.png" alt="JavaScript"/></a>
+    <a href="comunidade.html"><img src="https://img.icons8.com/ios/40/user-group-man-man.png" alt="Comunidade"/></a>
+  </div>
+  <div class="search-box">
+    <input type="text" placeholder="Buscar código..."> 🔍
+  </div>
+</header>
+
+  <div class="container">
+    <div class="new-post">
+      <textarea id="mensagem" placeholder="Compartilhe algo com a comunidade..."></textarea>
+      <select id="tag">
+        <option value="geral">#Geral</option>
+        <option value="frontend">#FrontEnd</option>
+        <option value="backend">#BackEnd</option>
+        <option value="php">#PHP</option>
+        <option value="python">#Python</option>
+      </select>
+      <input type="file" id="imagem" accept="image/*">
+      <button onclick="publicar()">Publicar</button>
+    </div>
+
+    <div class="filter">
+      <label for="filtro">Filtrar por tag:</label>
+      <select id="filtro" onchange="filtrarPosts()">
+        <option value="todas">Todas</option>
+        <option value="geral">#Geral</option>
+        <option value="frontend">#FrontEnd</option>
+        <option value="backend">#BackEnd</option>
+        <option value="php">#PHP</option>
+        <option value="python">#Python</option>
+      </select>
+      
+    </div>
+
+    <div id="feed"></div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+    document.addEventListener("click", function(e) {
+      var menu = document.getElementById("dropdownMenu");
+      if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
+        menu.style.display = "none";
+      }
+    });
+  </script>
+
+
+  <script>
+    const feed = document.getElementById('feed');
+    let comentariosVisiveis = [];
+  
+    let posts = JSON.parse(localStorage.getItem('postsCodeFlow')) || [
+      {
+        user: "AliceDev",
+        tag: "frontend",
+        content: "Alguém sabe como usar flexbox em responsividade?",
+        image: "",
+        avatar: "https://placehold.co/40x40/FF6F61/ffffff?text=A",
+        likes: 2,
+        comments: ["Use media queries!", "Flex-wrap pode ajudar!"]
+      },
+      {
+        user: "LucasCoder",
+        tag: "frontend",
+        content: "Atualizei meu portfólio! Acessem: lucascoder.dev",
+        image: "",
+        avatar: "https://placehold.co/40x40/6B5B95/ffffff?text=L",
+        likes: 5,
+        comments: ["Ficou lindo!", "Vou me inspirar no seu."]
+      },
+      {
+        user: "JoãoFull",
+        tag: "geral",
+        content: "Qual o melhor banco de dados para começar?",
+        image: "",
+        avatar: "https://placehold.co/40x40/88B04B/ffffff?text=J",
+        likes: 3,
+        comments: ["MySQL é ótimo.", "MongoDB se você curte NoSQL."]
+      }
+    ];
+  
+    function salvarNoLocalStorage() {
+      localStorage.setItem('postsCodeFlow', JSON.stringify(posts));
+    }
+  
+    function publicar() {
+      const texto = document.getElementById('mensagem').value.trim();
+      const tag = document.getElementById('tag').value;
+      const imagemInput = document.getElementById('imagem');
+      const filtroAtual = document.getElementById('filtro').value.toLowerCase();
+  
+      if (texto || imagemInput.files.length > 0) {
+        const reader = new FileReader();
+        const post = {
+          user: "LUIDI",
+          tag: tag.toLowerCase(),
+          content: texto,
+          image: "",
+          avatar: "https://placehold.co/40x40/000000/ffffff?text=LU",
+          likes: 0,
+          comments: []
+        };
+  
+        const inserirPost = () => {
+          posts.unshift(post);
+          salvarNoLocalStorage();
+          limparCampos();
+          comentariosVisiveis = [];
+          atualizarFeed(filtroAtual);
+        };
+  
+        if (imagemInput.files.length > 0) {
+          reader.onload = function (e) {
+            post.image = e.target.result;
+            inserirPost();
+          };
+          reader.readAsDataURL(imagemInput.files[0]);
+        } else {
+          inserirPost();
+        }
+      }
+    }
+  
+    function limparCampos() {
+      document.getElementById('mensagem').value = '';
+      document.getElementById('imagem').value = '';
+      document.getElementById('tag').value = 'geral';
+    }
+  
+    function curtir(index) {
+      posts[index].likes++;
+      salvarNoLocalStorage();
+      atualizarFeed(document.getElementById('filtro').value);
+    }
+  
+    function comentar(index, inputId) {
+      const input = document.getElementById(inputId);
+      const comentario = input.value.trim();
+      if (comentario) {
+        posts[index].comments.push(comentario);
+        input.value = '';
+        salvarNoLocalStorage();
+  
+        if (!comentariosVisiveis.includes(index)) {
+          comentariosVisiveis.push(index);
+        }
+  
+        atualizarFeed(document.getElementById('filtro').value);
+      }
+    }
+  
+    function deletarPost(index) {
+      if (confirm("Tem certeza que quer apagar este post?")) {
+        posts.splice(index, 1);
+        salvarNoLocalStorage();
+        atualizarFeed(document.getElementById('filtro').value);
+      }
+    }
+  
+    function deletarComentario(postIndex, commentIndex) {
+      posts[postIndex].comments.splice(commentIndex, 1);
+      salvarNoLocalStorage();
+      atualizarFeed(document.getElementById('filtro').value);
+    }
+  
+    function filtrarPosts() {
+      const filtro = document.getElementById('filtro').value;
+      atualizarFeed(filtro);
+    }
+  
+    function toggleComentarios(index) {
+      const i = comentariosVisiveis.indexOf(index);
+      if (i === -1) {
+        comentariosVisiveis.push(index);
+      } else {
+        comentariosVisiveis.splice(i, 1);
+      }
+      atualizarFeed(document.getElementById('filtro').value);
+    }
+  
+    function atualizarFeed(filtro = "todas") {
+      feed.innerHTML = "";
+      const filtroLower = filtro.toLowerCase();
+  
+      posts.forEach((post, i) => {
+        const tagLower = post.tag.toLowerCase();
+        if (filtroLower === "todas" || tagLower === filtroLower) {
+          const comentariosAbertos = comentariosVisiveis.includes(i);
+          const postEl = document.createElement('div');
+          postEl.className = 'post';
+          postEl.innerHTML = `
+            <div class="user">
+              <img class="avatar" src="${post.avatar}" alt="avatar">
+              <span class="username">${post.user}</span>
+              <span class="tag">#${post.tag}</span>
+              ${post.user === "LUIDI" ? `<button onclick="deletarPost(${i})" style="float:right; background: none; border: none; color: red; cursor: pointer;">🗑️</button>` : ""}
+            </div>
+            <div class="content">${post.content}</div>
+            ${post.image ? `<img src="${post.image}" alt="Imagem do post">` : ""}
+            <div class="actions">
+              <button onclick="curtir(${i})">❤️ Curtir (${post.likes})</button>
+              <button onclick="toggleComentarios(${i})">💬 Ver comentários</button>
+            </div>
+            <div class="comments" id="comments-${i}" style="display: ${comentariosAbertos ? 'block' : 'none'};">
+              ${post.comments.map((c, j) => `
+                <div class="comment">
+                  💬 ${c}
+                  ${post.user === "Você" ? `<button onclick="deletarComentario(${i}, ${j})" style="background: none; border: none; color: red; cursor: pointer;">❌</button>` : ""}
+                </div>`).join("")}
+              <div class="comment-input">
+                <input type="text" id="comment-${i}" placeholder="Comente...">
+                <button onclick="comentar(${i}, 'comment-${i}')">Enviar</button>
+              </div>
+            </div>
+          `;
+          feed.appendChild(postEl);
+        }
+      });
+    }
+  
+    atualizarFeed();
+  </script>
+  
+  
+  
+
+  
+</body>
+</html>

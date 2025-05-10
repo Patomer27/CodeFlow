@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chats</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000;
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #f2f2f2;
+      padding: 20px;
+      box-sizing: border-box;
+      border-right: 1px solid #ccc;
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .chat-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .chat-list li {
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .chat-list li:hover {
+      background-color: #ddd;
+    }
+
+    .chat-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+    }
+
+    .messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message {
+      max-width: 60%;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 5px 0;
+      word-wrap: break-word;
+      border: 1px solid #ccc;
+    }
+
+    .me {
+      align-self: flex-end;
+      background-color: #e6f7ff;
+      text-align: right;
+    }
+
+    .other {
+      align-self: flex-start;
+      background-color: #f0f0f0;
+      text-align: left;
+    }
+
+    .input-area {
+      display: flex;
+      padding: 10px 20px;
+      background-color: #f9f9f9;
+      border-top: 1px solid #ccc;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #000;
+      margin-right: 10px;
+    }
+
+    .input-area button {
+      background-color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .input-area button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Conversas</h2>
+    <ul class="chat-list">
+      <li>João</li>
+      <li>Ana</li>
+      <li>Equipe CodeFlow</li>
+    </ul>
+  </div>
+
+  <div class="chat-area">
+    <div class="messages" id="chat">
+      <div class="message other">Olá, você pode fazer um sistema de login?</div>
+      <div class="message me">Sim! Posso te entregar em HTML e PHP.</div>
+    </div>
+
+    <div class="input-area">
+      <input type="text" id="inputMsg" placeholder="Digite sua mensagem..." />
+      <button onclick="enviarMensagem()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    function enviarMensagem() {
+      const input = document.getElementById('inputMsg');
+      const mensagem = input.value.trim();
+      if (mensagem !== "") {
+        const div = document.createElement('div');
+        div.className = 'message me';
+        div.textContent = mensagem;
+
+        document.getElementById('chat').appendChild(div);
+        input.value = "";
+        input.focus();
+
+        // Rolagem automática para a última mensagem
+        const chat = document.getElementById('chat');
+        chat.scrollTop = chat.scrollHeight;
+      }
+    }
+
+    // Pressionar Enter também envia
+    document.getElementById('inputMsg').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        enviarMensagem();
+      }
+    });
+
+    const respostasCliente = [
+  "Ok, obrigado pela resposta!",
+  "Pode me mostrar um exemplo?",
+  "Quanto custa esse serviço?",
+  "Você aceita Pix?",
+  "Preciso disso ainda hoje.",
+  "Você consegue integrar com banco de dados?",
+  "Tem como fazer em React?",
+  "Gostei da ideia, vamos prosseguir.",
+  "Quais linguagens você domina?"
+];
+
+function enviarMensagem() {
+  const input = document.getElementById('inputMsg');
+  const mensagem = input.value.trim();
+  if (mensagem !== "") {
+    const div = document.createElement('div');
+    div.className = 'message me';
+    div.textContent = mensagem;
+    document.getElementById('chat').appendChild(div);
+    input.value = "";
+    input.focus();
+
+    const chat = document.getElementById('chat');
+    chat.scrollTop = chat.scrollHeight;
+
+    // Simula uma resposta aleatória do cliente após 2 segundos
+    setTimeout(() => {
+      const resposta = document.createElement('div');
+      resposta.className = 'message other';
+      const aleatoria = respostasCliente[Math.floor(Math.random() * respostasCliente.length)];
+      resposta.textContent = aleatoria;
+      chat.appendChild(resposta);
+      chat.scrollTop = chat.scrollHeight;
+    }, 2000);
+  }
+}
+  </script>
+</body>
+</html>
