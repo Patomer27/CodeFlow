@@ -1,21 +1,377 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Página de Perfil</title>
+  <meta charset="UTF-8" />
+  <title>Perfil - CodeFlow</title>
   <style>
     body {
-      font-family: sans-serif;
-      padding: 40px;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4f4f4;
-    }
-    h1 {
       color: #333;
     }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      border-bottom: 2px solid #000;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #20232a;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .topbar img {
+      height: 28px;
+      cursor: pointer;
+    }
+
+    .topbar button {
+      background-color: #61dafb;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .topbar button:hover {
+      background-color: #21a1f1;
+    }
+
+    .container {
+      padding: 80px 20px 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ccc;
+    }
+
+    .info-container {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-info h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .user-info p {
+      margin-top: 5px;
+      color: #666;
+    }
+
+    .editar-btn {
+      padding: 8px 14px;
+      font-size: 14px;
+      background-color: #61dafb;
+      border: none;
+      border-radius: 4px;
+      color: #000;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .editar-btn:hover {
+      background-color: #21a1f1;
+    }
+
+    .tabs {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .tabs button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      padding: 10px 0;
+      cursor: pointer;
+      color: #555;
+      border-bottom: 3px solid transparent;
+    }
+
+    .tabs button.active {
+      color: #000;
+      border-color: #61dafb;
+      font-weight: bold;
+    }
+
+    .tab-content {
+      margin-top: 30px;
+    }
+
+    .activity-card {
+      background: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .activity-card span {
+      display: block;
+      font-size: 14px;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .tabs {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 30px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #000;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #e6e6e6;
+    }
+
+      .menu-icon {
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .icons {
+      display: flex;
+      gap: 20px;
+      
+    }
+
+    .icons img {
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 5px 10px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
   </style>
 </head>
 <body>
-  <h1>Página de Perfil</h1>
-  <p>Esta é a página de perfil.</p>
+
+<header>
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <div class="dropdown-menu" id="dropdownMenu">
+    <a href="index.html">Início</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="configuracoes.html">Configurações</a>
+    <a href="pagamento.html">Pagamento</a>
+    <a href="notificacoes.html">Notificações</a>
+    <a href="chats.html">Chats</a>
+    <a href="meus-codigos.html">Meus Códigos</a>
+    <a href="sair.html">Login</a>
+  </div>
+  <div class="icons">
+    <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="Home"/></a>
+    <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
+    <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
+    <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
+    <a href="python.html"><img src="https://img.icons8.com/ios/40/python.png" alt="Python"/></a>
+    <a href="javascript.html"><img src="https://img.icons8.com/ios/40/javascript.png" alt="JavaScript"/></a>
+    <a href="comunidade.html"><img src="https://img.icons8.com/ios/40/user-group-man-man.png" alt="Comunidade"/></a>
+  </div>
+  <div class="search-box">
+    <input type="text" placeholder="Buscar código..."> 🔍
+  </div>
+</header>
+
+<div class="container">
+  <div class="profile-header">
+    <img class="avatar" id="avatarImg" src="" alt="Avatar">
+    <div class="info-container">
+      <div class="user-info">
+        <h1 id="nome">JoãoDev</h1>
+        <p id="bio">Desenvolvedor web apaixonado por desafios criativos. 🚀</p>
+      </div>
+      <button onclick="editarPerfil()" class="editar-btn">Editar</button>
+    </div>
+  </div>
+
+  <!-- Abas -->
+  <div class="tabs">
+    <button class="active" onclick="mostrarAba('visao')">Visão Geral</button>
+    <button onclick="mostrarAba('projetos')">Projetos</button>
+    <button onclick="mostrarAba('conexoes')">Conexões</button>
+    <button onclick="mostrarAba('conta')">Conta</button>
+  </div>
+
+  <!-- Conteúdo das abas -->
+  <div class="tab-content" id="visao">
+    <div class="activity-card">
+      📌 JoãoDev curtiu o post “Flexbox responsivo”
+      <span>Há 2 horas</span>
+    </div>
+    <div class="activity-card">
+      💬 Comentou em “Sistema de Login”: “Ficou muito bem feito, parabéns!”
+      <span>Ontem</span>
+    </div>
+    <div class="activity-card">
+      🔗 Seguiu AliceDev
+      <span>2 dias atrás</span>
+    </div>
+    <div class="activity-card">
+      📁 Criou o projeto "To-do List com React"
+      <span>3 dias atrás</span>
+    </div>
+  </div>
+
+  <div class="tab-content" id="projetos" style="display: none;">
+    <p>Lista de projetos em breve...</p>
+  </div>
+
+  <div class="tab-content" id="conexoes" style="display: none;">
+    <p>Suas conexões e seguidores aparecerão aqui.</p>
+  </div>
+
+  <div class="tab-content" id="conta" style="display: none;">
+    <p>Configurações da conta (email, senha, etc).</p>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("dropdownMenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  document.addEventListener("click", function (e) {
+    const menu = document.getElementById("dropdownMenu");
+    if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
+      menu.style.display = "none";
+    }
+  });
+
+  function mostrarAba(id) {
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+
+    const buttons = document.querySelectorAll('.tabs button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  function editarPerfil() {
+    const nomeAtual = document.getElementById("nome").textContent;
+    const bioAtual = document.getElementById("bio").textContent;
+
+    const novoNome = prompt("Digite seu novo nome:", nomeAtual);
+    const novaBio = prompt("Digite sua nova bio:", bioAtual);
+
+    if (novoNome) {
+      document.getElementById("nome").textContent = novoNome;
+      localStorage.setItem("nomePerfil", novoNome);
+      atualizarAvatar(novoNome);
+    }
+
+    if (novaBio) {
+      document.getElementById("bio").textContent = novaBio;
+      localStorage.setItem("bioPerfil", novaBio);
+    }
+  }
+
+  function atualizarAvatar(nome) {
+    const iniciais = nome
+      .trim()
+      .split(" ")
+      .map(n => n[0])
+      .join("")
+      .toUpperCase()
+      .substring(0, 2);
+
+    const novaUrl = `https://placehold.co/100x100/000000/ffffff?text=${iniciais}`;
+    document.getElementById("avatarImg").src = novaUrl;
+    localStorage.setItem("avatarIniciais", iniciais);
+  }
+
+  window.onload = function () {
+    const nomeSalvo = localStorage.getItem("nomePerfil");
+    const bioSalva = localStorage.getItem("bioPerfil");
+    const avatarIniciais = localStorage.getItem("avatarIniciais");
+
+    if (nomeSalvo) document.getElementById("nome").textContent = nomeSalvo;
+    if (bioSalva) document.getElementById("bio").textContent = bioSalva;
+    if (avatarIniciais) {
+      document.getElementById("avatarImg").src = `https://placehold.co/100x100/000000/ffffff?text=${avatarIniciais}`;
+    } else {
+      atualizarAvatar(document.getElementById("nome").textContent);
+    }
+  }
+</script>
+
 </body>
 </html>
