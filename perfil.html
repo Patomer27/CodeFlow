@@ -288,18 +288,40 @@
     </div>
   </div>
 
-  <div class="tab-content" id="projetos" style="display: none;">
-    <p>Lista de projetos em breve...</p>
-  </div>
+ 
 
   <div class="tab-content" id="conexoes" style="display: none;">
     <p>Suas conexões e seguidores aparecerão aqui.</p>
   </div>
 
-  <div class="tab-content" id="conta" style="display: none;">
-    <p>Configurações da conta (email, senha, etc).</p>
+  <div class="tab-content" id="projetos" style="display: none;">
+  <div class="activity-card">
+    <strong>To-do List com React</strong>
+    <p>Uma aplicação simples para organizar tarefas com React.js</p>
+    <span>Status: Concluído</span>
+  </div>
+  <div class="activity-card">
+    <strong>API REST em Node.js</strong>
+    <p>Backend para gerenciamento de usuários e autenticação.</p>
+    <span>Status: Em desenvolvimento</span>
+  </div>
+  <div class="activity-card">
+    <strong>Landing Page HTML/CSS</strong>
+    <p>Página institucional responsiva para apresentar um produto.</p>
+    <span>Status: Publicado</span>
   </div>
 </div>
+
+<div class="tab-content" id="conta" style="display: none;">
+  <div class="activity-card">
+    <strong>Email:</strong> joaodev@email.com
+    <br><strong>Tipo de Conta:</strong> Desenvolvedor
+    <br><strong>Plano:</strong> Gratuito
+    <br><br>
+    <button onclick="editarConta()" class="editar-btn">Editar Informações</button>
+  </div>
+</div>
+
 
 <!-- Script -->
 <script>
