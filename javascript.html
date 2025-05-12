@@ -3,68 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>CodeFlow - JavaScript</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #fff;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      border-bottom: 2px solid #000;
-    }
-    .menu-icon {
-      font-size: 30px;
-      cursor: pointer;
-    }
-    .icons {
-      display: flex;
-      gap: 20px;
-    }
-    .icons img {
-      cursor: pointer;
-    }
-    .search-box {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 5px 10px;
-    }
-    .search-box input {
-      border: none;
-      outline: none;
-      font-size: 16px;
-    }
-    .products {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      padding: 40px 20px;
-      gap: 30px;
-    }
-    .product {
-      text-align: center;
-      width: 200px;
-    }
-    .product img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border: 1px solid #000;
-    }
-    .product h4, .product p {
-      margin: 8px 0 0 0;
-    }
-  </style>
+  <link rel="stylesheet" href="CSS/linguagens.css">
 </head>
 <body>
-  <header>
-    <div class="menu-icon">&#9776;</div>
+  < <header>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="perfil.html">Perfil</a>
+      <a href="configuracoes.html">Configurações</a>
+      <a href="pagamento.html">Dados de Pagamento</a>
+      <a href="notificacoes.html">Notificações</a>
+      <a href="chats.html">chats</a>
+      <a href="meus-codigos.html">Meus Códigos</a>
+      <a href="sair.html">Login</a>
+    </div>
     <div class="icons">
+      
+      <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="home"/></a>
       <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
       <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
       <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
@@ -76,6 +31,19 @@
       <input type="text" placeholder="Buscar código..."> 🔍
     </div>
   </header>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+    document.addEventListener("click", function(e) {
+      var menu = document.getElementById("dropdownMenu");
+      if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
+        menu.style.display = "none";
+      }
+    });
+  </script>
   <section class="products">
     
         <div class="product">
