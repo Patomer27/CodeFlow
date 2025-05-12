@@ -314,13 +314,14 @@
 
 <div class="tab-content" id="conta" style="display: none;">
   <div class="activity-card">
-    <strong>Email:</strong> joaodev@email.com
-    <br><strong>Tipo de Conta:</strong> Desenvolvedor
-    <br><strong>Plano:</strong> Gratuito
-    <br><br>
+    <p><strong>Email:</strong> <span id="emailConta">joaodev@email.com</span></p>
+    <p><strong>Tipo de Conta:</strong> <span id="tipoConta">Desenvolvedor</span></p>
+    <p><strong>Plano:</strong> <span id="planoConta">Gratuito</span></p>
+    <br>
     <button onclick="editarConta()" class="editar-btn">Editar Informações</button>
   </div>
 </div>
+
 
 
 <!-- Script -->
@@ -393,6 +394,51 @@
       atualizarAvatar(document.getElementById("nome").textContent);
     }
   }
+
+   function editarConta() {
+    const emailAtual = document.getElementById("emailConta").textContent;
+    const tipoAtual = document.getElementById("tipoConta").textContent;
+    const planoAtual = document.getElementById("planoConta").textContent;
+
+    const novoEmail = prompt("Digite seu novo email:", emailAtual);
+    const novoTipo = prompt("Digite seu tipo de conta:", tipoAtual);
+    const novoPlano = prompt("Digite seu plano (Gratuito, Pro, etc):", planoAtual);
+
+    if (novoEmail) {
+      document.getElementById("emailConta").textContent = novoEmail;
+      localStorage.setItem("emailConta", novoEmail);
+    }
+    if (novoTipo) {
+      document.getElementById("tipoConta").textContent = novoTipo;
+      localStorage.setItem("tipoConta", novoTipo);
+    }
+    if (novoPlano) {
+      document.getElementById("planoConta").textContent = novoPlano;
+      localStorage.setItem("planoConta", novoPlano);
+    }
+  }
+
+  // Carrega dados da aba Conta salvos no localStorage
+  window.onload = function () {
+    const nomeSalvo = localStorage.getItem("nomePerfil");
+    const bioSalva = localStorage.getItem("bioPerfil");
+    const avatarIniciais = localStorage.getItem("avatarIniciais");
+    const emailConta = localStorage.getItem("emailConta");
+    const tipoConta = localStorage.getItem("tipoConta");
+    const planoConta = localStorage.getItem("planoConta");
+
+    if (nomeSalvo) document.getElementById("nome").textContent = nomeSalvo;
+    if (bioSalva) document.getElementById("bio").textContent = bioSalva;
+    if (avatarIniciais) {
+      document.getElementById("avatarImg").src = `https://placehold.co/100x100/000000/ffffff?text=${avatarIniciais}`;
+    } else {
+      atualizarAvatar(document.getElementById("nome").textContent);
+    }
+
+    if (emailConta) document.getElementById("emailConta").textContent = emailConta;
+    if (tipoConta) document.getElementById("tipoConta").textContent = tipoConta;
+    if (planoConta) document.getElementById("planoConta").textContent = planoConta;
+  };
 </script>
 
 </body>
