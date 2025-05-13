@@ -1,21 +1,281 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Notificações</title>
+  <meta charset="UTF-8" />
+  <title>Notificações - CodeFlow</title>
   <style>
     body {
-      font-family: sans-serif;
-      padding: 40px;
-      background-color: #f4f4f4;
-    }
-    h1 {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
       color: #333;
+    }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        border-bottom: 2px solid #000;
+      }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .filter-bar button {
+      padding: 8px 12px;
+      background-color: #e0e0e0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .filter-bar button.active {
+      background-color: #61dafb;
+      font-weight: bold;
+    }
+
+    .notification {
+      background-color: #fff;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .notification.unread {
+      background-color: #eaf6ff;
+    }
+
+    .notification .text {
+      flex: 1;
+    }
+
+    .notification .text span {
+      display: block;
+      font-size: 13px;
+      color: #777;
+    }
+
+    .notification button {
+      background: none;
+      border: none;
+      color: #0077cc;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .top-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .top-actions button {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #61dafb;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .top-actions button:hover {
+      background-color: #21a1f1;
+    }
+
+    .menu-icon {
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .icons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .icons img {
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 5px 10px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 30px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #000;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+    .dropdown-menu a:hover {
+      background-color: #e6e6e6;
     }
   </style>
 </head>
 <body>
-  <h1>Notificações</h1>
-  <p>Esta é a notificações.</p>
+  <header>
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <div class="dropdown-menu" id="dropdownMenu">
+    <a href="index.html">inicio</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="configuracoes.html">Configurações</a>
+    <a href="notificacoes.html">Notificações</a>
+    <a href="chats.html">chats</a>
+    <a href="meus-codigos.html">Meus Códigos</a>
+    <a href="sair.html">Login</a>
+  </div>
+  <div class="icons">
+    <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="home"/></a>
+    <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
+    <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
+    <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
+    <a href="python.html"><img src="https://img.icons8.com/ios/40/python.png" alt="Python"/></a>
+    <a href="javascript.html"><img src="https://img.icons8.com/ios/40/javascript.png" alt="JavaScript"/></a>
+    <a href="comunidade.html"><img src="https://img.icons8.com/ios/40/user-group-man-man.png" alt="Comunidade"/></a>
+  </div>
+  <div class="search-box">
+    <input type="text" placeholder="Buscar código..."> 🔍
+  </div>
+</header>
+
+ <script>
+    function toggleMenu() {
+      var menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+    document.addEventListener("click", function(e) {
+      var menu = document.getElementById("dropdownMenu");
+      if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
+        menu.style.display = "none";
+      }
+    });
+  </script>
+
+  <div class="container">
+    <div class="top-actions">
+      <button onclick="marcarTodasComoLidas()">Marcar todas como lidas</button>
+      <button onclick="filtrar('todas')" class="active" id="btn-todas">Todas</button>
+    </div>
+
+    <div class="filter-bar">
+      <button onclick="filtrar('curtida')">Curtidas</button>
+      <button onclick="filtrar('comentario')">Comentários</button>
+      <button onclick="filtrar('seguidores')">Seguidores</button>
+      <button onclick="filtrar('atualizacao')">Atualizações</button>
+    </div>
+
+    <div id="lista-notificacoes">
+      <!-- Notificações serão injetadas aqui -->
+    </div>
+  </div>
+
+  <script>
+    const notificacoes = [
+      { id: 1, tipo: "curtida", texto: "AliceDev curtiu seu post sobre React", tempo: "2h", lida: false },
+      { id: 2, tipo: "comentario", texto: "Você recebeu um comentário em 'API em Node.js'", tempo: "5h", lida: false },
+      { id: 3, tipo: "seguidores", texto: "PedroFull agora está te seguindo", tempo: "1d", lida: true },
+      { id: 4, tipo: "atualizacao", texto: "Seu projeto 'To-Do App' foi atualizado", tempo: "2d", lida: true },
+      { id: 5, tipo: "curtida", texto: "LucasJS curtiu seu código em JavaScript", tempo: "3d", lida: false },
+    ];
+
+    let filtroAtual = "todas";
+
+    function renderizarNotificacoes() {
+      const container = document.getElementById("lista-notificacoes");
+      container.innerHTML = "";
+
+      const filtradas = notificacoes.filter(n => filtroAtual === "todas" || n.tipo === filtroAtual);
+
+      if (filtradas.length === 0) {
+        container.innerHTML = "<p>Nenhuma notificação encontrada.</p>";
+        return;
+      }
+
+      filtradas.forEach(n => {
+        const div = document.createElement("div");
+        div.className = "notification" + (n.lida ? "" : " unread");
+        div.innerHTML = `
+          <div class="text">
+            ${n.texto}
+            <span>${n.tempo} atrás</span>
+          </div>
+          <div>
+            ${!n.lida ? `<button onclick="marcarComoLida(${n.id})">Marcar como lida</button>` : ""}
+            <button onclick="apagar(${n.id})">❌</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function filtrar(tipo) {
+      filtroAtual = tipo;
+      document.querySelectorAll(".filter-bar button").forEach(btn => btn.classList.remove("active"));
+      if (tipo !== "todas") document.querySelector(`.filter-bar button[onclick*="${tipo}"]`).classList.add("active");
+      else document.getElementById("btn-todas").classList.add("active");
+      renderizarNotificacoes();
+    }
+
+    function marcarComoLida(id) {
+      const notif = notificacoes.find(n => n.id === id);
+      if (notif) notif.lida = true;
+      renderizarNotificacoes();
+    }
+
+    function marcarTodasComoLidas() {
+      notificacoes.forEach(n => n.lida = true);
+      renderizarNotificacoes();
+    }
+
+    function apagar(id) {
+      const index = notificacoes.findIndex(n => n.id === id);
+      if (index !== -1) notificacoes.splice(index, 1);
+      renderizarNotificacoes();
+    }
+
+    renderizarNotificacoes();
+  </script>
 </body>
 </html>

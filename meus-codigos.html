@@ -2,20 +2,270 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Meus Códigos</title>
+  <title>Meus Códigos - CodeFlow</title>
   <style>
     body {
-      font-family: sans-serif;
-      padding: 40px;
-      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
     }
     h1 {
+      text-align: center;
       color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      border-bottom: 2px solid #000;
+    }
+
+    .form-container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #61dafb;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .code-list {
+      max-width: 800px;
+      margin: 30px auto;
+    }
+    .code-card {
+      background: white;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .code-card img {
+      max-width: 100px;
+      float: right;
+      border-radius: 5px;
+    }
+    .actions {
+      margin-top: 10px;
+    }
+    .actions button {
+      margin-right: 10px;
+    }
+    .menu-icon {
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .icons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .icons img {
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 5px 10px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 30px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #000;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+    .dropdown-menu a:hover {
+      background-color: #e6e6e6;
     }
   </style>
 </head>
 <body>
-  <h1>Meus Códigos</h1>
-  <p>Esta é a meus códigos.</p>
+  <header>
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <div class="dropdown-menu" id="dropdownMenu">
+    <a href="index.html">inicio</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="configuracoes.html">Configurações</a>
+    <a href="notificacoes.html">Notificações</a>
+    <a href="chats.html">chats</a>
+    <a href="meus-codigos.html">Meus Códigos</a>
+    <a href="sair.html">Login</a>
+  </div>
+  <div class="icons">
+    <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="home"/></a>
+    <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
+    <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
+    <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
+    <a href="python.html"><img src="https://img.icons8.com/ios/40/python.png" alt="Python"/></a>
+    <a href="javascript.html"><img src="https://img.icons8.com/ios/40/javascript.png" alt="JavaScript"/></a>
+    <a href="comunidade.html"><img src="https://img.icons8.com/ios/40/user-group-man-man.png" alt="Comunidade"/></a>
+  </div>
+  <div class="search-box">
+    <input type="text" placeholder="Buscar código..."> 🔍
+  </div>
+</header>
+
+ <script>
+    function toggleMenu() {
+      var menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+    document.addEventListener("click", function(e) {
+      var menu = document.getElementById("dropdownMenu");
+      if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
+        menu.style.display = "none";
+      }
+    });
+  </script>
+<h1>📁 Meus Códigos</h1>
+
+<div class="form-container">
+  <input type="text" id="titulo" placeholder="Título do Projeto">
+  <input type="text" id="linguagem" placeholder="Linguagem (ex: Python, JavaScript)">
+  <textarea id="descricao" placeholder="Descrição do projeto..."></textarea>
+  <input type="file" id="imagem">
+  <button onclick="adicionarCodigo()">Salvar Código</button>
+</div>
+
+<div class="code-list" id="listaCodigos"></div>
+
+<script>
+  let codigos = JSON.parse(localStorage.getItem("meusCodigos")) || [];
+  let editandoIndex = -1;
+
+  function adicionarCodigo() {
+    const titulo = document.getElementById("titulo").value;
+    const linguagem = document.getElementById("linguagem").value;
+    const descricao = document.getElementById("descricao").value;
+    const imagemInput = document.getElementById("imagem");
+
+    if (!titulo || !linguagem || !descricao) {
+      alert("Preencha todos os campos!");
+      return;
+    }
+
+    const leitor = new FileReader();
+    leitor.onload = function(e) {
+      const imagemData = imagemInput.files[0] ? e.target.result : null;
+
+      const novoCodigo = {
+        titulo,
+        linguagem,
+        descricao,
+        imagem: imagemData
+      };
+
+      if (editandoIndex > -1) {
+        codigos[editandoIndex] = novoCodigo;
+        editandoIndex = -1;
+      } else {
+        codigos.push(novoCodigo);
+      }
+
+      localStorage.setItem("meusCodigos", JSON.stringify(codigos));
+      limparFormulario();
+      mostrarCodigos();
+    };
+
+    if (imagemInput.files[0]) {
+      leitor.readAsDataURL(imagemInput.files[0]);
+    } else {
+      leitor.onload({target: {result: null}});
+    }
+  }
+
+  function limparFormulario() {
+    document.getElementById("titulo").value = "";
+    document.getElementById("linguagem").value = "";
+    document.getElementById("descricao").value = "";
+    document.getElementById("imagem").value = "";
+  }
+
+  function mostrarCodigos() {
+    const lista = document.getElementById("listaCodigos");
+    lista.innerHTML = "";
+
+    codigos.forEach((codigo, index) => {
+      const card = document.createElement("div");
+      card.className = "code-card";
+
+      card.innerHTML = `
+        <h3>${codigo.titulo} (${codigo.linguagem})</h3>
+        <p>${codigo.descricao}</p>
+        ${codigo.imagem ? `<img src="${codigo.imagem}" alt="Imagem do projeto">` : ""}
+        <div class="actions">
+          <button onclick="editarCodigo(${index})">✏️ Editar</button>
+          <button onclick="deletarCodigo(${index})">🗑️ Deletar</button>
+        </div>
+      `;
+
+      lista.appendChild(card);
+    });
+  }
+
+  function editarCodigo(index) {
+    const codigo = codigos[index];
+    document.getElementById("titulo").value = codigo.titulo;
+    document.getElementById("linguagem").value = codigo.linguagem;
+    document.getElementById("descricao").value = codigo.descricao;
+    editandoIndex = index;
+    window.scrollTo({top: 0, behavior: "smooth"});
+  }
+
+  function deletarCodigo(index) {
+    if (confirm("Tem certeza que deseja excluir este código?")) {
+      codigos.splice(index, 1);
+      localStorage.setItem("meusCodigos", JSON.stringify(codigos));
+      mostrarCodigos();
+    }
+  }
+
+  window.onload = mostrarCodigos;
+</script>
+
 </body>
 </html>

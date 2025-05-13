@@ -3,221 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Comunidade - CodeFlow</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #fff;
-      color: #000;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      border-bottom: 2px solid #000;
-    }
-
-    .menu-icon {
-      font-size: 30px;
-      cursor: pointer;
-    }
-
-    .icons {
-      display: flex;
-      gap: 20px;
-      
-    }
-
-    .icons img {
-      cursor: pointer;
-      height: 40px;
-      width: 40px;
-    }
-
-    .search-box {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 5px 10px;
-    }
-
-    .search-box input {
-      border: none;
-      outline: none;
-      font-size: 16px;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
-
-    .new-post {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 20px;
-    }
-
-    .new-post textarea,
-    .new-post select,
-    .new-post input[type="file"] {
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    .new-post button {
-      width: 120px;
-      padding: 10px;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .filter {
-      margin-bottom: 20px;
-    }
-
-    .filter select {
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .post {
-      border: 1px solid #ccc;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      background-color: #f9f9f9;
-    }
-
-    .post img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    .post .user {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .post .username {
-      font-weight: bold;
-    }
-
-    .post .tag {
-      color: gray;
-      margin-left: 10px;
-    }
-
-    .post .content {
-      margin-bottom: 10px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    .comments {
-      margin-top: 10px;
-      border-top: 1px solid #ccc;
-      padding-top: 10px;
-    }
-
-    .comment {
-      margin-bottom: 8px;
-    }
-
-    .comment-input {
-      display: flex;
-      margin-top: 5px;
-    }
-
-    .comment-input input {
-      flex: 1;
-      padding: 6px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .comment-input button {
-      margin-left: 5px;
-      padding: 6px 10px;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 60px;
-      left: 30px;
-      background-color: #f9f9f9;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      width: 200px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    .dropdown-menu a {
-      display: block;
-      padding: 12px 20px;
-      color: #000;
-      text-decoration: none;
-      border-bottom: 1px solid #eee;
-    }
-    .dropdown-menu a:hover {
-      background-color: #e6e6e6;
-    }
-  </style>
+  <link rel="stylesheet" href="CSS/linguagens.css">
 </head>
-<header>
-  <div class="menu-icon" onclick="toggleMenu()">☰</div>
-  <div class="dropdown-menu" id="dropdownMenu">
-    <a href="index.html">inicio</a>
-    <a href="perfil.html">Perfil</a>
-    <a href="configuracoes.html">Configurações</a>
-    <a href="pagamento.html">Dados de Pagamento</a>
-    <a href="notificacoes.html">Notificações</a>
-    <a href="chats.html">chats</a>
-    <a href="meus-codigos.html">Meus Códigos</a>
-    <a href="sair.html">Login</a>
-  </div>
-  <div class="icons">
-    <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="home"/></a>
-    <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
-    <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
-    <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
-    <a href="python.html"><img src="https://img.icons8.com/ios/40/python.png" alt="Python"/></a>
-    <a href="javascript.html"><img src="https://img.icons8.com/ios/40/javascript.png" alt="JavaScript"/></a>
-    <a href="comunidade.html"><img src="https://img.icons8.com/ios/40/user-group-man-man.png" alt="Comunidade"/></a>
-  </div>
-  <div class="search-box">
-    <input type="text" placeholder="Buscar código..."> 🔍
-  </div>
-</header>
+<body>
+
+  <header>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="index.html">Início</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="configuracoes.html">Configurações</a>
+      <a href="notificacoes.html">Notificações</a>
+      <a href="chats.html">Chats</a>
+      <a href="meus-codigos.html">Meus Códigos</a>
+      <a href="sair.html">Login</a>
+    </div>
+    <div class="icons">
+      <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="home"/></a>
+      <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
+      <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
+      <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
+      <a href="python.html"><img src="https://img.icons8.com/ios/40/python.png" alt="Python"/></a>
+      <a href="javascript.html"><img src="https://img.icons8.com/ios/40/javascript.png" alt="JavaScript"/></a>
+      <a href="comunidade.html"><img src="https://img.icons8.com/ios/40/user-group-man-man.png" alt="Comunidade"/></a>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Buscar código..."> 🔍
+    </div>
+  </header>
 
   <div class="container">
     <div class="new-post">
@@ -243,11 +56,11 @@
         <option value="php">#PHP</option>
         <option value="python">#Python</option>
       </select>
-      
     </div>
 
     <div id="feed"></div>
   </div>
+
 
   <script>
     function toggleMenu() {

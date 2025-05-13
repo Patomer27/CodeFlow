@@ -3,135 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <title>Chats</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #000;
-      display: flex;
-      height: 100vh;
-    }
-
-    .sidebar {
-      width: 250px;
-      background-color: #f2f2f2;
-      padding: 20px;
-      box-sizing: border-box;
-      border-right: 1px solid #ccc;
-    }
-
-    .sidebar h2 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .chat-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .chat-list li {
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .chat-list li:hover {
-      background-color: #ddd;
-    }
-
-    .chat-area {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background-color: #fff;
-    }
-
-    .messages {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .message {
-      max-width: 60%;
-      padding: 10px;
-      border-radius: 10px;
-      margin: 5px 0;
-      word-wrap: break-word;
-      border: 1px solid #ccc;
-    }
-
-    .me {
-      align-self: flex-end;
-      background-color: #e6f7ff;
-      text-align: right;
-    }
-
-    .other {
-      align-self: flex-start;
-      background-color: #f0f0f0;
-      text-align: left;
-    }
-
-    .input-area {
-      display: flex;
-      padding: 10px 20px;
-      background-color: #f9f9f9;
-      border-top: 1px solid #ccc;
-    }
-
-    .input-area input {
-      flex: 1;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #fff;
-      color: #000;
-      margin-right: 10px;
-    }
-
-    .input-area button {
-      background-color: #000;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-    }
-
-    .input-area button:hover {
-      background-color: #444;
-    }
-  </style>
+  <link rel="stylesheet" href="CSS/linguagens.css">
+  <link rel="stylesheet" href="CSS/chat.css">
 </head>
 <body>
-  <div class="sidebar">
-    <h2>Conversas</h2>
-    <ul class="chat-list">
-      <li>João</li>
-      <li>Ana</li>
-      <li>Equipe CodeFlow</li>
-    </ul>
-  </div>
 
-  <div class="chat-area">
-    <div class="messages" id="chat">
-      <div class="message other">Olá, você pode fazer um sistema de login?</div>
-      <div class="message me">Sim! Posso te entregar em HTML e PHP.</div>
+  <!-- MENU NO TOPO -->
+  <header>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="index.html">Início</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="configuracoes.html">Configurações</a>
+      <a href="notificacoes.html">Notificações</a>
+      <a href="chats.html">Chats</a>
+      <a href="meus-codigos.html">Meus Códigos</a>
+      <a href="sair.html">Login</a>
+    </div>
+    <div class="icons">
+      <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="home"/></a>
+      <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
+      <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
+      <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
+      <a href="python.html"><img src="https://img.icons8.com/ios/40/python.png" alt="Python"/></a>
+      <a href="javascript.html"><img src="https://img.icons8.com/ios/40/javascript.png" alt="JavaScript"/></a>
+      <a href="comunidade.html"><img src="https://img.icons8.com/ios/40/user-group-man-man.png" alt="Comunidade"/></a>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Buscar código..."> 🔍
+    </div>
+  </header>
+
+  <!-- CHAT ABAIXO DO MENU -->
+  <div class="chat-container">
+    <div class="sidebar">
+      <h2>Conversas</h2>
+      <ul class="chat-list">
+        <li>João</li>
+        <li>Ana</li>
+        <li>Equipe CodeFlow</li>
+      </ul>
     </div>
 
-    <div class="input-area">
-      <input type="text" id="inputMsg" placeholder="Digite sua mensagem..." />
-      <button onclick="enviarMensagem()">Enviar</button>
+    <div class="chat-area">
+      <div class="messages" id="chat">
+        <div class="message other">Olá, você pode fazer um sistema de login?</div>
+        <div class="message me">Sim! Posso te entregar em HTML e PHP.</div>
+      </div>
+
+      <div class="input-area">
+        <input type="text" id="inputMsg" placeholder="Digite sua mensagem..." />
+        <button onclick="enviarMensagem()">Enviar</button>
+      </div>
     </div>
   </div>
 
   <script>
+    function toggleMenu() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+
+    document.addEventListener("click", function(e) {
+      const menu = document.getElementById("dropdownMenu");
+      if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
+        menu.style.display = "none";
+      }
+    });
+
+    const respostasCliente = [
+      "Ok, obrigado pela resposta!",
+      "Pode me mostrar um exemplo?",
+      "Quanto custa esse serviço?",
+      "Você aceita Pix?",
+      "Preciso disso ainda hoje.",
+      "Você consegue integrar com banco de dados?",
+      "Tem como fazer em React?",
+      "Gostei da ideia, vamos prosseguir.",
+      "Quais linguagens você domina?"
+    ];
+
     function enviarMensagem() {
       const input = document.getElementById('inputMsg');
       const mensagem = input.value.trim();
@@ -139,61 +90,30 @@
         const div = document.createElement('div');
         div.className = 'message me';
         div.textContent = mensagem;
-
         document.getElementById('chat').appendChild(div);
         input.value = "";
         input.focus();
 
-        // Rolagem automática para a última mensagem
         const chat = document.getElementById('chat');
         chat.scrollTop = chat.scrollHeight;
+
+        setTimeout(() => {
+          const resposta = document.createElement('div');
+          resposta.className = 'message other';
+          const aleatoria = respostasCliente[Math.floor(Math.random() * respostasCliente.length)];
+          resposta.textContent = aleatoria;
+          chat.appendChild(resposta);
+          chat.scrollTop = chat.scrollHeight;
+        }, 2000);
       }
     }
 
-    // Pressionar Enter também envia
     document.getElementById('inputMsg').addEventListener('keypress', function(e) {
       if (e.key === 'Enter') {
         enviarMensagem();
       }
     });
-
-    const respostasCliente = [
-  "Ok, obrigado pela resposta!",
-  "Pode me mostrar um exemplo?",
-  "Quanto custa esse serviço?",
-  "Você aceita Pix?",
-  "Preciso disso ainda hoje.",
-  "Você consegue integrar com banco de dados?",
-  "Tem como fazer em React?",
-  "Gostei da ideia, vamos prosseguir.",
-  "Quais linguagens você domina?"
-];
-
-function enviarMensagem() {
-  const input = document.getElementById('inputMsg');
-  const mensagem = input.value.trim();
-  if (mensagem !== "") {
-    const div = document.createElement('div');
-    div.className = 'message me';
-    div.textContent = mensagem;
-    document.getElementById('chat').appendChild(div);
-    input.value = "";
-    input.focus();
-
-    const chat = document.getElementById('chat');
-    chat.scrollTop = chat.scrollHeight;
-
-    // Simula uma resposta aleatória do cliente após 2 segundos
-    setTimeout(() => {
-      const resposta = document.createElement('div');
-      resposta.className = 'message other';
-      const aleatoria = respostasCliente[Math.floor(Math.random() * respostasCliente.length)];
-      resposta.textContent = aleatoria;
-      chat.appendChild(resposta);
-      chat.scrollTop = chat.scrollHeight;
-    }, 2000);
-  }
-}
   </script>
+
 </body>
 </html>
