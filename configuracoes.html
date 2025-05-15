@@ -3,167 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>Configurações - CodeFlow</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      border-bottom: 2px solid #000;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      margin-top: 40px;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 8px;
-      color: #20232a;
-    }
-
-    .config-section {
-      margin-top: 20px;
-    }
-
-    label {
-      display: block;
-      margin: 10px 0 5px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-bottom: 15px;
-    }
-
-    .switch {
-      display: flex;
-      align-items: center;
-      margin: 10px 0;
-    }
-
-    .switch input {
-      margin-right: 10px;
-    }
-
-    .btn {
-      background-color: #61dafb;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .btn:hover {
-      background-color: #21a1f1;
-    }
-    
-    .menu-icon {
-      font-size: 30px;
-      cursor: pointer;
-    }
-
-    .icons {
-      display: flex;
-      gap: 20px;
-    }
-
-    .icons img {
-      cursor: pointer;
-      height: 40px;
-      width: 40px;
-    }
-
-    .search-box {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 5px 10px;
-    }
-
-    .search-box input {
-      border: none;
-      outline: none;
-      font-size: 16px;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 60px;
-      left: 30px;
-      background-color: #f9f9f9;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      width: 200px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    .dropdown-menu a {
-      display: block;
-      padding: 12px 20px;
-      color: #000;
-      text-decoration: none;
-      border-bottom: 1px solid #eee;
-    }
-    .dropdown-menu a:hover {
-      background-color: #e6e6e6;
-    }
-  </style>
+  <link rel="stylesheet" href="CSS/configuracoes.css">
 </head>
 <body>
   <header>
-  <div class="menu-icon" onclick="toggleMenu()">☰</div>
-  <div class="dropdown-menu" id="dropdownMenu">
-    <a href="index.html">inicio</a>
-    <a href="perfil.html">Perfil</a>
-    <a href="configuracoes.html">Configurações</a>
-    <a href="notificacoes.html">Notificações</a>
-    <a href="chats.html">chats</a>
-    <a href="meus-codigos.html">Meus Códigos</a>
-    <a href="login.html">Login</a>
-  </div>
-  <div class="icons">
-    <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="home"/></a>
-    <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
-    <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
-    <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
-    <a href="python.html"><img src="https://img.icons8.com/ios/40/python.png" alt="Python"/></a>
-    <a href="javascript.html"><img src="https://img.icons8.com/ios/40/javascript.png" alt="JavaScript"/></a>
-    <a href="comunidade.html"><img src="https://img.icons8.com/ios/40/user-group-man-man.png" alt="Comunidade"/></a>
-  </div>
-  <div class="search-box">
-    <input type="text" placeholder="Buscar código..."> 🔍
-  </div>
-</header>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="index.html">inicio</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="configuracoes.html">Configurações</a>
+      <a href="notificacoes.html">Notificações</a>
+      <a href="chats.html">chats</a>
+      <a href="meus-codigos.html">Meus Códigos</a>
+      <a href="login.html">Login</a>
+    </div>
+    <div class="icons">
+      <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="home"/></a>
+      <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
+      <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
+      <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
+      <a href="python.html"><img src="https://img.icons8.com/ios/40/python.png" alt="Python"/></a>
+      <a href="javascript.html"><img src="https://img.icons8.com/ios/40/javascript.png" alt="JavaScript"/></a>
+      <a href="comunidade.html"><img src="https://img.icons8.com/ios/40/user-group-man-man.png" alt="Comunidade"/></a>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Buscar código..."> 🔍
+    </div>
+  </header>
 
- <script>
+  <script>
     function toggleMenu() {
       var menu = document.getElementById("dropdownMenu");
       menu.style.display = (menu.style.display === "block") ? "none" : "block";
     }
+
     document.addEventListener("click", function(e) {
       var menu = document.getElementById("dropdownMenu");
       if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
@@ -172,80 +45,248 @@
     });
   </script>
 
-<div class="container">
-  <h2>Informações Pessoais</h2>
-  <div class="config-section">
-    <label for="nome">Nome Completo</label>
-    <input type="text" id="nome" placeholder="João Silva">
-    
-    <label for="email">Email</label>
-    <input type="email" id="email" placeholder="joao@email.com">
-    
-    <button class="btn">Salvar Dados</button>
-  </div>
+  <div class="container">
+    <h2>Informações Pessoais</h2>
+    <div class="config-section">
+      <label for="nome">Nome Completo</label>
+      <input type="text" id="nome" placeholder="João Silva">
 
-  <h2>Segurança</h2>
-  <div class="config-section">
-    <label for="senha-atual">Senha Atual</label>
-    <input type="password" id="senha-atual" placeholder="••••••••">
-    
-    <label for="nova-senha">Nova Senha</label>
-    <input type="password" id="nova-senha" placeholder="Nova senha">
-    
-    <label for="confirmar-senha">Confirmar Nova Senha</label>
-    <input type="password" id="confirmar-senha" placeholder="Confirme a nova senha">
-    
-    <button class="btn">Atualizar Senha</button>
-  </div>
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="joao@email.com">
 
-  <h2>Notificações</h2>
-  <div class="config-section">
-    <div class="switch">
-      <input type="checkbox" id="email-notifications" checked>
-      <label for="email-notifications">Receber notificações por e-mail</label>
-    </div>
-    
-    <div class="switch">
-      <input type="checkbox" id="app-notifications" checked>
-      <label for="app-notifications">Receber notificações no app</label>
-    </div>
-    
-    <button class="btn">Salvar Preferências</button>
-  </div>
-
-  <h2>Preferências</h2>
-  <div class="config-section">
-    <label for="tema">Tema</label>
-    <select id="tema">
-      <option value="claro">Claro</option>
-      <option value="escuro">Escuro</option>
-    </select>
-
-    <label for="idioma">Idioma</label>
-    <select id="idioma">
-      <option value="pt-BR">Português (Brasil)</option>
-      <option value="en-US">Inglês (EUA)</option>
-    </select>
-
-    <button class="btn">Salvar Preferências</button>
-  </div>
-
-  <h2>Privacidade</h2>
-  <div class="config-section">
-    <div class="switch">
-      <input type="checkbox" id="perfil-publico" checked>
-      <label for="perfil-publico">Perfil público</label>
-    </div>
-    
-    <div class="switch">
-      <input type="checkbox" id="mostrar-atividade">
-      <label for="mostrar-atividade">Mostrar minhas atividades recentes</label>
+      <button class="btn">Salvar Dados</button>
     </div>
 
-    <button class="btn">Salvar Configurações de Privacidade</button>
+    <h2>Segurança</h2>
+    <div class="config-section">
+      <label for="senha-atual">Senha Atual</label>
+      <input type="password" id="senha-atual" placeholder="••••••••">
+
+      <label for="nova-senha">Nova Senha</label>
+      <input type="password" id="nova-senha" placeholder="Nova senha">
+
+      <label for="confirmar-senha">Confirmar Nova Senha</label>
+      <input type="password" id="confirmar-senha" placeholder="Confirme a nova senha">
+
+      <button class="btn">Atualizar Senha</button>
+    </div>
+
+    <h2>Notificações</h2>
+    <div class="config-section">
+      <div class="switch">
+        <label class="toggle">
+          <input type="checkbox" id="email-notifications" checked>
+          <span class="slider"></span>
+        </label>
+        <label for="email-notifications">Receber notificações por e-mail</label>
+      </div>
+
+      <div class="switch">
+        <label class="toggle">
+          <input type="checkbox" id="app-notifications" checked>
+          <span class="slider"></span>
+        </label>
+        <label for="app-notifications">Receber notificações no app</label>
+      </div>
+
+      <button class="btn">Salvar Preferências</button>
+    </div>
+
+    <h2>Preferências</h2>
+    <div class="config-section">
+      <label for="tema">Tema</label>
+      <select id="tema">
+        <option value="claro">Claro</option>
+        <option value="escuro">Escuro</option>
+      </select>
+
+      <label for="idioma">Idioma</label>
+      <select id="idioma">
+        <option value="pt-BR">Português (Brasil)</option>
+        <option value="en-US">Inglês (EUA)</option>
+      </select>
+
+      <button class="btn">Salvar Preferências</button>
+    </div>
+
+    <h2>Privacidade</h2>
+    <div class="config-section">
+      <div class="switch">
+        <label class="toggle">
+          <input type="checkbox" id="perfil-publico" checked>
+          <span class="slider"></span>
+        </label>
+        <label for="perfil-publico">Perfil público</label>
+      </div>
+
+      <div class="switch">
+        <label class="toggle">
+          <input type="checkbox" id="mostrar-atividade">
+          <span class="slider"></span>
+        </label>
+        <label for="mostrar-atividade">Mostrar minhas atividades recentes</label>
+      </div>
+
+      <button class="btn">Salvar Configurações de Privacidade</button>
+    </div>
   </div>
 
-</div>
+<script>
+  // Salvar Dados Pessoais
+  document.querySelectorAll(".btn")[0].addEventListener("click", () => {
+    localStorage.setItem("nome", document.getElementById("nome").value);
+    localStorage.setItem("email", document.getElementById("email").value);
+    alert("Dados pessoais salvos!");
+  });
+
+  // Atualizar Senha (simulação apenas)
+  document.querySelectorAll(".btn")[1].addEventListener("click", () => {
+    const atual = document.getElementById("senha-atual").value;
+    const nova = document.getElementById("nova-senha").value;
+    const confirmar = document.getElementById("confirmar-senha").value;
+    if (nova === confirmar && nova !== "") {
+      localStorage.setItem("senha", nova); // Simulação – não recomendado na prática
+      alert("Senha atualizada (simulação)!");
+    } else {
+      alert("As senhas não coincidem ou estão vazias.");
+    }
+  });
+
+  // Salvar Notificações
+  document.querySelectorAll(".btn")[2].addEventListener("click", () => {
+    localStorage.setItem("notificacaoEmail", document.getElementById("email-notifications").checked);
+    localStorage.setItem("notificacaoApp", document.getElementById("app-notifications").checked);
+    alert("Preferências de notificação salvas!");
+  });
+
+  // Salvar Preferências
+  document.querySelectorAll(".btn")[3].addEventListener("click", () => {
+    localStorage.setItem("tema", document.getElementById("tema").value);
+    localStorage.setItem("idioma", document.getElementById("idioma").value);
+    alert("Preferências salvas!");
+  });
+
+  // Salvar Privacidade
+  document.querySelectorAll(".btn")[4].addEventListener("click", () => {
+    localStorage.setItem("perfilPublico", document.getElementById("perfil-publico").checked);
+    localStorage.setItem("mostrarAtividade", document.getElementById("mostrar-atividade").checked);
+    alert("Configurações de privacidade salvas!");
+  });
+
+  // Carregar dados ao iniciar a página
+  window.addEventListener("load", () => {
+    document.getElementById("nome").value = localStorage.getItem("nome") || "";
+    document.getElementById("email").value = localStorage.getItem("email") || "";
+
+    document.getElementById("email-notifications").checked = localStorage.getItem("notificacaoEmail") === "true";
+    document.getElementById("app-notifications").checked = localStorage.getItem("notificacaoApp") === "true";
+
+    document.getElementById("tema").value = localStorage.getItem("tema") || "claro";
+    document.getElementById("idioma").value = localStorage.getItem("idioma") || "pt-BR";
+
+    document.getElementById("perfil-publico").checked = localStorage.getItem("perfilPublico") === "true";
+    document.getElementById("mostrar-atividade").checked = localStorage.getItem("mostrarAtividade") === "true";
+  });
+</script>
+
+<script>
+  const traducoes = {
+    "pt-BR": {
+      "title": "Configurações - CodeFlow",
+      "informacoesPessoais": "Informações Pessoais",
+      "nomeCompleto": "Nome Completo",
+      "email": "Email",
+      "salvarDados": "Salvar Dados",
+      "seguranca": "Segurança",
+      "senhaAtual": "Senha Atual",
+      "novaSenha": "Nova Senha",
+      "confirmarNovaSenha": "Confirmar Nova Senha",
+      "atualizarSenha": "Atualizar Senha",
+      "notificacoes": "Notificações",
+      "receberEmail": "Receber notificações por e-mail",
+      "receberApp": "Receber notificações no app",
+      "salvarNotificacoes": "Salvar Preferências",
+      "preferencias": "Preferências",
+      "tema": "Tema",
+      "idioma": "Idioma",
+      "salvarPreferencias": "Salvar Preferências",
+      "privacidade": "Privacidade",
+      "perfilPublico": "Perfil público",
+      "mostrarAtividade": "Mostrar minhas atividades recentes",
+      "salvarPrivacidade": "Salvar Configurações de Privacidade"
+    },
+    "en-US": {
+      "title": "Settings - CodeFlow",
+      "informacoesPessoais": "Personal Information",
+      "nomeCompleto": "Full Name",
+      "email": "Email",
+      "salvarDados": "Save Data",
+      "seguranca": "Security",
+      "senhaAtual": "Current Password",
+      "novaSenha": "New Password",
+      "confirmarNovaSenha": "Confirm New Password",
+      "atualizarSenha": "Update Password",
+      "notificacoes": "Notifications",
+      "receberEmail": "Receive notifications by email",
+      "receberApp": "Receive app notifications",
+      "salvarNotificacoes": "Save Notification Preferences",
+      "preferencias": "Preferences",
+      "tema": "Theme",
+      "idioma": "Language",
+      "salvarPreferencias": "Save Preferences",
+      "privacidade": "Privacy",
+      "perfilPublico": "Public profile",
+      "mostrarAtividade": "Show my recent activity",
+      "salvarPrivacidade": "Save Privacy Settings"
+    }
+  };
+
+  function aplicarIdioma(idioma) {
+    const t = traducoes[idioma];
+
+    document.title = t.title;
+    document.querySelector("h2:nth-of-type(1)").textContent = t.informacoesPessoais;
+    document.querySelector("label[for='nome']").textContent = t.nomeCompleto;
+    document.querySelector("label[for='email']").textContent = t.email;
+    document.querySelectorAll(".btn")[0].textContent = t.salvarDados;
+
+    document.querySelector("h2:nth-of-type(2)").textContent = t.seguranca;
+    document.querySelector("label[for='senha-atual']").textContent = t.senhaAtual;
+    document.querySelector("label[for='nova-senha']").textContent = t.novaSenha;
+    document.querySelector("label[for='confirmar-senha']").textContent = t.confirmarNovaSenha;
+    document.querySelectorAll(".btn")[1].textContent = t.atualizarSenha;
+
+    document.querySelector("h2:nth-of-type(3)").textContent = t.notificacoes;
+    document.querySelector("label[for='email-notifications']").textContent = t.receberEmail;
+    document.querySelector("label[for='app-notifications']").textContent = t.receberApp;
+    document.querySelectorAll(".btn")[2].textContent = t.salvarNotificacoes;
+
+    document.querySelector("h2:nth-of-type(4)").textContent = t.preferencias;
+    document.querySelector("label[for='tema']").textContent = t.tema;
+    document.querySelector("label[for='idioma']").textContent = t.idioma;
+    document.querySelectorAll(".btn")[3].textContent = t.salvarPreferencias;
+
+    document.querySelector("h2:nth-of-type(5)").textContent = t.privacidade;
+    document.querySelector("label[for='perfil-publico']").textContent = t.perfilPublico;
+    document.querySelector("label[for='mostrar-atividade']").textContent = t.mostrarAtividade;
+    document.querySelectorAll(".btn")[4].textContent = t.salvarPrivacidade;
+  }
+
+  // Atualiza idioma ao selecionar
+  document.getElementById("idioma").addEventListener("change", function () {
+    const idioma = this.value;
+    localStorage.setItem("idioma", idioma);
+    aplicarIdioma(idioma);
+  });
+
+  // Ao carregar a página
+  window.addEventListener("load", () => {
+    const idiomaSalvo = localStorage.getItem("idioma") || "pt-BR";
+    document.getElementById("idioma").value = idiomaSalvo;
+    aplicarIdioma(idiomaSalvo);
+  });
+</script>
+
 
 </body>
 </html>

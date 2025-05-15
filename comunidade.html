@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Comunidade - CodeFlow</title>
-  <link rel="stylesheet" href="CSS/linguagens.css">
+  <link rel="stylesheet" href="CSS/comunidade.css">
 </head>
 <body>
 
@@ -32,23 +32,37 @@
     </div>
   </header>
 
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+    document.addEventListener("click", function(e) {
+      var menu = document.getElementById("dropdownMenu");
+      if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
+        menu.style.display = "none";
+      }
+    });
+  </script>
+
   <div class="container">
     <div class="new-post">
       <textarea id="mensagem" placeholder="Compartilhe algo com a comunidade..."></textarea>
-      <select id="tag">
+      <select id="tag" class="select-tag">
         <option value="geral">#Geral</option>
         <option value="frontend">#FrontEnd</option>
         <option value="backend">#BackEnd</option>
         <option value="php">#PHP</option>
         <option value="python">#Python</option>
       </select>
-      <input type="file" id="imagem" accept="image/*">
+      
+      <input class="input" type="file" id="imagem" accept="image/*">
       <button onclick="publicar()">Publicar</button>
     </div>
 
     <div class="filter">
       <label for="filtro">Filtrar por tag:</label>
-      <select id="filtro" onchange="filtrarPosts()">
+      <select class="filter-tag" id="filtro" onchange="filtrarPosts()">
         <option value="todas">Todas</option>
         <option value="geral">#Geral</option>
         <option value="frontend">#FrontEnd</option>
@@ -62,18 +76,7 @@
   </div>
 
 
-  <script>
-    function toggleMenu() {
-      var menu = document.getElementById("dropdownMenu");
-      menu.style.display = (menu.style.display === "block") ? "none" : "block";
-    }
-    document.addEventListener("click", function(e) {
-      var menu = document.getElementById("dropdownMenu");
-      if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
-        menu.style.display = "none";
-      }
-    });
-  </script>
+  
 
 
   <script>
