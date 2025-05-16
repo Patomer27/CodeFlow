@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Detalhes do Código - CodeFlow</title>
+  <link rel="stylesheet" href="CSS/vitrine.css">
+</head>
+<body>
+
+  <header>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="perfil.html">Perfil</a>
+      <a href="configuracoes.html">Configurações</a>
+      <a href="notificacoes.html">Notificações</a>
+      <a href="chats.html">chats</a>
+      <a href="meus-codigos.html">Meus Códigos</a>
+      <a href="login.html">Login</a>
+    </div>
+    <div class="icons">
+      
+      <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="home"/></a>
+      <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
+      <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
+      <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
+      <a href="python.html"><img src="https://img.icons8.com/ios/40/python.png" alt="Python"/></a>
+      <a href="javascript.html"><img src="https://img.icons8.com/ios/40/javascript.png" alt="JavaScript"/></a>
+      <a href="comunidade.html"><img src="https://img.icons8.com/ios/40/user-group-man-man.png" alt="Comunidade"/></a>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Buscar código..."> 🔍
+    </div>
+  </header>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+    document.addEventListener("click", function(e) {
+      var menu = document.getElementById("dropdownMenu");
+      if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
+        menu.style.display = "none";
+      }
+    });
+  </script>
+
+  <div class="container">
+    <img id="imagem-produto" class="produto-imagem" src="" alt="Imagem do produto">
+    <h1 class="titulo" id="titulo-produto">Carregando...</h1>
+    <p class="preco" id="preco-produto"></p>
+    <p class="descricao" id="descricao-produto"></p>
+
+    <div class="avaliacao">
+      Avalie:
+      <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+    </div>
+
+    <div class="comentarios">
+      <h3>Comentários</h3>
+      <textarea id="comentario-input" placeholder="Escreva seu comentário..."></textarea>
+      <button onclick="adicionarComentario()">Comentar</button>
+      <div id="comentarios-lista"></div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+
+    document.addEventListener("click", function (e) {
+      const menu = document.getElementById("dropdownMenu");
+      if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
+        menu.style.display = "none";
+      }
+    });
+
+    const produtos = [
+      {
+        id: "1",
+        titulo: "Sistema de Login",
+        preco: "R$19,90",
+        descricao: "Código completo para login com PHP + HTML, inclui validação e segurança.",
+        imagem: "https://placehold.co/600x300/1c1c1c/ffffff?text=Login+PHP"
+      },
+      {
+        id: "2",
+        titulo: "To-do List com React",
+        preco: "R$24,90",
+        descricao: "Aplicação React funcional com estados, filtros e responsividade.",
+        imagem: "https://placehold.co/600x300/2d2d2d/ffffff?text=To-do+React"
+      },
+      {
+        id: "3",
+        titulo: "API Node.js + Express",
+        preco: "R$29,90",
+        descricao: "API completa RESTful para gerenciamento de tarefas com rotas protegidas.",
+        imagem: "https://placehold.co/600x300/3b3b3b/ffffff?text=API+Node"
+      }
+    ];
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+    const produto = produtos.find(p => p.id === id);
+
+    if (produto) {
+      document.getElementById("titulo-produto").textContent = produto.titulo;
+      document.getElementById("preco-produto").textContent = produto.preco;
+      document.getElementById("descricao-produto").textContent = produto.descricao;
+      document.getElementById("imagem-produto").src = produto.imagem;
+    } else {
+      document.querySelector(".container").innerHTML = "<h2>Produto não encontrado.</h2>";
+    }
+
+    function adicionarComentario() {
+      const input = document.getElementById("comentario-input");
+      const texto = input.value.trim();
+      if (texto) {
+        const div = document.createElement("div");
+        div.className = "comentario";
+        div.textContent = "💬 " + texto;
+        document.getElementById("comentarios-lista").appendChild(div);
+        input.value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>

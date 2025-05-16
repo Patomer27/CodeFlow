@@ -15,7 +15,7 @@ header {
   align-items: center;
   padding: 15px 30px;
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.08); /* fundo mais claro */
   border-bottom: 2px solid #444;
   position: sticky;
   top: 0;
@@ -33,7 +33,7 @@ header {
   gap: 20px;
 }
 
-.icons img {
+.icons img { 
   filter: brightness(1.2) contrast(1.2);
   cursor: pointer;
   height: 40px;
@@ -113,7 +113,7 @@ label {
   font-weight: 500;
 }
 
-input[type="text"],
+
 input[type="email"],
 input[type="password"],
 select {
