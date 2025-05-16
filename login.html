@@ -14,7 +14,7 @@
   <button onclick="fazerLogin()">Entrar</button>
   <div class="error" id="erroLogin"></div>
   <div class="signup-link">
-    Não tem uma conta? <a href="#">Cadastre-se</a>
+    Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
   </div>
 </div>
 
@@ -37,7 +37,7 @@
     if (user === usuarioDemo.usuario && senha === usuarioDemo.senha) {
       erro.textContent = "";
       alert("Login bem-sucedido!");
-      window.location.href = "meus-codigos.html";
+      window.location.href = "index.html";
     } else {
       erro.textContent = "Usuário ou senha incorretos.";
     }
