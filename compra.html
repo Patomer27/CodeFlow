@@ -46,23 +46,18 @@
   </script>
 
   <div class="container">
-    <img id="imagem-produto" class="produto-imagem" src="" alt="Imagem do produto">
-    <h1 class="titulo" id="titulo-produto">Carregando...</h1>
+      <h1 class="titulo" id="titulo-produto">agradecemos a compra aqui esta seu codigo</h1>
+    <img id="imagem-produto" class="produto-imagem" src="IMAGE/codigo.png" alt="Imagem do produto">
     <p class="preco" id="preco-produto"></p>
     <p class="descricao" id="descricao-produto"></p>
 
-    <div class="avaliacao">
-      Avalie:
-      <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
-    </div>
+    
 
     <div class="comentarios">
-      <a href="compra.html"><button>comprar</button></a>
-      <h3>Comentários</h3>
-      <textarea id="comentario-input" placeholder="Escreva seu comentário..."></textarea>
-      <button onclick="adicionarComentario()">Comentar</button>
-      <div id="comentarios-lista"></div>
-    </div>
+      <button >copiar</button>
+      <button >baixar</button>
+      
+      
   </div>
 
   <script>
@@ -78,60 +73,6 @@
       }
     });
 
-    const produtos = [
-      {
-        id: "1",
-        titulo: "Menu inicial Java",
-        preco: "R$19,90",
-        descricao: "Código completo de um menu completamente feito na linguagem java",
-        imagem: "IMAGE/menu-java.jpg  "
-      },
-      {
-        id: "2",
-        titulo: "Login em PHP",
-        preco: "R$24,90",
-        descricao: "uma tela simples em html, css e php",
-        imagem: "IMAGE/login-php.jpg"
-      },
-      {
-        id: "3",
-        titulo: "CRUD em C++",
-        preco: "R$29,90",
-        descricao: "sistema com capacidade de criar, ler, editar e apagar em c++",
-        imagem: "IMAGE/crud-c++.jpg"
-      },
-      { id: "4",
-        titulo: "Jogo em Python",
-        preco: "R$76,90",
-        descricao: "jogo simples feito em pthon (ainda em produção)",
-        imagem: "IMAGE/jogo-python.jpg"
-      }
-    ];
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get("id");
-    const produto = produtos.find(p => p.id === id);
-
-    if (produto) {
-      document.getElementById("titulo-produto").textContent = produto.titulo;
-      document.getElementById("preco-produto").textContent = produto.preco;
-      document.getElementById("descricao-produto").textContent = produto.descricao;
-      document.getElementById("imagem-produto").src = produto.imagem;
-    } else {
-      document.querySelector(".container").innerHTML = "<h2>Produto não encontrado.</h2>";
-    }
-
-    function adicionarComentario() {
-      const input = document.getElementById("comentario-input");
-      const texto = input.value.trim();
-      if (texto) {
-        const div = document.createElement("div");
-        div.className = "comentario";
-        div.textContent = "💬 " + texto;
-        document.getElementById("comentarios-lista").appendChild(div);
-        input.value = "";
-      }
-    }
   </script>
 
 </body>
