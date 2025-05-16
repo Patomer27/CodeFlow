@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: white;
+}
+
+header {
+  background-color: #1f1f1f;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #333;
+}
+
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+}
+
+.icons {
+  display: flex;
+  gap: 20px;
+}
+
+.icons img {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 5px 10px;
+  background-color: #1f1f1f;
+}
+
+.search-box input {
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 20px 40px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  background-color: #1c1c1e;
+  padding: 30px;
+  border-radius: 10px;
+  gap: 30px;
+}
+
+.user-profile .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #61dafb;
+}
+
+.user-info h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #fff;
+}
+
+.user-info p {
+  margin: 8px 0;
+  color: #bbb;
+}
+
+.user-info a {
+  color: #61dafb;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.user-info a:hover {
+  text-decoration: underline;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+.buttons button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buttons button:hover {
+  background-color: #21a1f1;
+}
+
+.projects {
+  margin-top: 40px;
+}
+
+.projects h2 {
+  color: #61dafb;
+  margin-bottom: 20px;
+}
+
+.project-card {
+  background-color: #2a2a2e;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.project-card h3 {
+  margin-top: 0;
+  color: #61dafb;
+}
