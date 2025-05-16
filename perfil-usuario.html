@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Perfil de Usuário - CodeFlow</title>
+  <title>Perfil do Usuário - CodeFlow</title>
   <link rel="stylesheet" href="CSS/linguagens.css">
   <style>
     .botao-interacao {
@@ -25,16 +25,6 @@
     .botao-interacao button:hover {
       background-color: #21a1f1;
     }
-
-    .user-info a {
-      color: #61dafb;
-      font-size: 14px;
-      text-decoration: none;
-    }
-
-    .user-info a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
@@ -52,11 +42,6 @@
   </div>
   <div class="icons">
     <a href="index.html"><img src="https://img.icons8.com/?size=100&id=2797&format=png&color=000000" alt="Home"/></a>
-    <a href="c++.html"><img src="https://img.icons8.com/ios/40/c-plus-plus-logo.png" alt="C++"/></a>
-    <a href="java.html"><img src="https://img.icons8.com/ios/40/java-coffee-cup-logo.png" alt="Java"/></a>
-    <a href="php.html"><img src="https://img.icons8.com/ios/40/php-logo.png" alt="PHP"/></a>
-    <a href="python.html"><img src="https://img.icons8.com/ios/40/python.png" alt="Python"/></a>
-    <a href="javascript.html"><img src="https://img.icons8.com/ios/40/javascript.png" alt="JavaScript"/></a>
     <a href="comunidade.html"><img src="https://img.icons8.com/ios/40/user-group-man-man.png" alt="Comunidade"/></a>
   </div>
   <div class="search-box">
@@ -66,12 +51,12 @@
 
 <div class="container">
   <div class="profile-header">
-    <img class="avatar" src="https://placehold.co/100x100/000000/ffffff?text=JD" alt="Avatar">
+    <img class="avatar" id="avatarImg" src="" alt="Avatar">
     <div class="info-container" style="flex: 1; justify-content: space-between; align-items: center;">
       <div class="user-info">
-        <h1>JoãoDev</h1>
-        <p>Desenvolvedor full stack com foco em aplicações modernas. 🚀</p>
-        <a href="https://portfóliodemo.com" target="_blank">🌐 Ver Portfólio</a>
+        <h1 id="nomeUsuario">Usuário</h1>
+        <p id="bioUsuario">Carregando bio...</p>
+        <a id="portfolioLink" href="#" target="_blank" style="color: #61dafb;"></a>
       </div>
       <div class="botao-interacao">
         <button id="btnSeguir" onclick="seguirUsuario()">Seguir</button>
@@ -80,39 +65,26 @@
     </div>
   </div>
 
-  <!-- Abas -->
   <div class="tabs">
     <button class="active" onclick="mostrarAba('visao')">Visão Geral</button>
     <button onclick="mostrarAba('projetos')">Projetos</button>
     <button onclick="mostrarAba('conexoes')">Conexões</button>
   </div>
 
-  <!-- Conteúdo das abas -->
   <div class="tab-content" id="visao">
-    <div class="activity-card">
-      📌 JoãoDev curtiu o post “Flexbox responsivo”
-      <span>Há 2 horas</span>
-    </div>
-    <div class="activity-card">
-      💬 Comentou em “Sistema de Login”: “Ficou muito bem feito, parabéns!”
-      <span>Ontem</span>
-    </div>
-    <div class="activity-card">
-      🔗 Seguiu AliceDev
-      <span>2 dias atrás</span>
-    </div>
+    <div class="activity-card">📌 Curtiram o post “Flexbox responsivo” <span>Há 2 horas</span></div>
+    <div class="activity-card">💬 Comentou em “Sistema de Login”: “Ficou muito bem feito!” <span>Ontem</span></div>
   </div>
 
   <div class="tab-content" id="projetos" style="display: none;">
     <div class="activity-card">
-      <strong>To-do List com React</strong>
-      <p>Uma aplicação para organizar tarefas com React.js.</p>
-      <span>Status: Concluído</span>
+      <strong>Landing Page HTML/CSS</strong>
+      <p>Página institucional para apresentar serviços</p>
     </div>
   </div>
 
   <div class="tab-content" id="conexoes" style="display: none;">
-    <p>Conexões públicas de JoãoDev.</p>
+    <p>Conexões públicas deste usuário.</p>
   </div>
 </div>
 
@@ -122,37 +94,69 @@
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
   }
 
-  document.addEventListener("click", function (e) {
-    const menu = document.getElementById("dropdownMenu");
-    if (!e.target.closest(".menu-icon") && !e.target.closest("#dropdownMenu")) {
-      menu.style.display = "none";
-    }
-  });
-
   function mostrarAba(id) {
-    const tabs = document.querySelectorAll('.tab-content');
-    tabs.forEach(tab => tab.style.display = 'none');
-    document.getElementById(id).style.display = 'block';
+    document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
+    document.getElementById(id).style.display = "block";
 
-    const buttons = document.querySelectorAll('.tabs button');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    document.querySelectorAll(".tabs button").forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
   }
 
- function seguirUsuario() {
-  const btn = document.getElementById("btnSeguir");
-
-  if (btn.textContent === "Seguir") {
-    btn.textContent = "Seguindo ✅";
-    btn.style.backgroundColor = "#4caf50"; // Verde
-  } else {
-    btn.textContent = "Seguir";
-    btn.style.backgroundColor = "#61dafb"; // Azul original
+  function seguirUsuario() {
+    const btn = document.getElementById("btnSeguir");
+    if (btn.textContent === "Seguir") {
+      btn.textContent = "Seguindo ✅";
+      btn.style.backgroundColor = "#4caf50";
+    } else {
+      btn.textContent = "Seguir";
+      btn.style.backgroundColor = "#61dafb";
+    }
   }
-}
 
   function enviarMensagem() {
     window.location.href = "chats.html";
+  }
+
+  // 🔥 Dados simulados dos usuários
+  const usuarios = {
+    "JoãoDev": {
+      bio: "Desenvolvedor full stack com foco em aplicações modernas 🚀",
+      avatar: "https://placehold.co/100x100/000000/ffffff?text=JD",
+      portfolio: "https://joaodev.dev"
+    },
+    "LucasCoder": {
+      bio: "Frontend focado em acessibilidade e design responsivo",
+      avatar: "https://placehold.co/100x100/000000/ffffff?text=LC",
+      portfolio: "https://lucascoder.dev"
+    },
+    "AliceDev": {
+      bio: "Especialista em UI/UX e entusiasta de prototipagem",
+      avatar: "https://placehold.co/100x100/000000/ffffff?text=AD",
+      portfolio: "https://alicedev.design"
+    },
+    "LUIDI":{
+      bio: "Especialista em UI/UX e entusiasta de prototipagem",
+      avatar: "https://placehold.co/100x100/000000/ffffff?text=LU",
+      portfolio: "https://alicedev.design"
+    }
+  };
+
+  // 🔍 Pegando nome da URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const user = urlParams.get("user");
+
+  // ⏬ Atualiza perfil com os dados
+  if (user && usuarios[user]) {
+    document.getElementById("nomeUsuario").textContent = user;
+    document.getElementById("bioUsuario").textContent = usuarios[user].bio;
+    document.getElementById("avatarImg").src = usuarios[user].avatar;
+    const link = document.getElementById("portfolioLink");
+    link.href = usuarios[user].portfolio;
+    link.textContent = "🌐 Ver portfólio";
+  } else {
+    document.getElementById("nomeUsuario").textContent = "Usuário não encontrado";
+    document.getElementById("bioUsuario").textContent = "Esse perfil não está disponível.";
+    document.getElementById("btnSeguir").style.display = "none";
   }
 </script>
 

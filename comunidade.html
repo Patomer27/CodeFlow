@@ -103,7 +103,7 @@
         comments: ["Ficou lindo!", "Vou me inspirar no seu."]
       },
       {
-        user: "JoãoFull",
+        user: "JoãoDev",
         tag: "geral",
         content: "Qual o melhor banco de dados para começar?",
         image: "",
@@ -224,9 +224,17 @@
           postEl.className = 'post';
           postEl.innerHTML = `
             <div class="user">
-              <img class="avatar" src="${post.avatar}" alt="avatar">
-              <span class="username">${post.user}</span>
-              <span class="tag">#${post.tag}</span>
+  <a href="perfil-usuario.html?user=${encodeURIComponent(post.user)}">
+    <img class="avatar" src="${post.avatar}" alt="avatar">
+  </a>
+  <a href="perfil-usuario.html?user=${encodeURIComponent(post.user)}" class="username" style="color:#61dafb; text-decoration:none;">
+    ${post.user}
+  </a>
+  <span class="tag">#${post.tag}</span>
+  ${post.user === "LUIDI" ? `<button onclick="deletarPost(${i})" style="float:right; background: none; border: none; color: red; cursor: pointer;">🗑️</button>` : ""}
+</div>
+
+
               ${post.user === "LUIDI" ? `<button onclick="deletarPost(${i})" style="float:right; background: none; border: none; color: red; cursor: pointer;">🗑️</button>` : ""}
             </div>
             <div class="content">${post.content}</div>
